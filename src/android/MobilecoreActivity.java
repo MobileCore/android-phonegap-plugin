@@ -26,11 +26,11 @@ public class MobilecoreActivity extends CordovaActivity {
 
 		// Use this if you want to provide us information about your users:
 		UserProperties userProperties = new UserProperties().setAgeRange(20, 40)
-															.setGender(Gender.FEMALE);		
+															.setGender(Gender.MALE);		
 		MobileCore.init(this,
 						MOBILECORE_DEV_HASH,
-						userProperties,
 						MobileCore.LOG_TYPE.DEBUG,
+						userProperties,
 						AD_UNITS.INTERSTITIAL,
 						AD_UNITS.STICKEEZ,
 						AD_UNITS.DIRECT_TO_MARKET);
@@ -42,6 +42,8 @@ public class MobilecoreActivity extends CordovaActivity {
 				AD_UNITS.STICKEEZ,
 				AD_UNITS.DIRECT_TO_MARKET);*/
 
+		
+		// DON'T remove this try-catch block
 		try {
 			Method method = MobileCore.class.getDeclaredMethod("setMediationParams", String.class);
 			method.setAccessible(true);

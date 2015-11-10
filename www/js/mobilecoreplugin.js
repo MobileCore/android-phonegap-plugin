@@ -1,4 +1,4 @@
-var MobilecorePlugin = {
+cordova.define("com.mobilecore.phonegap.MobilecorePlugin", function(require, exports, module) { var MobilecorePlugin = {
 
 
 /**
@@ -38,7 +38,7 @@ initMobilecore: function(successCallback, errorCallback, devHash, logLevel, adUn
 * @param successcallback
 * @param errorcallback
 */
-showInterstitial: function(successCallback, errorCallback) {
+showInterstitial: function(successCallback, errorCallback, trigger) {
 	if (errorCallback == null) { errorCallback = function() {}}
        if (typeof errorCallback != "function")  {
            console.log("error callback parameter must be a function");
@@ -57,135 +57,17 @@ showInterstitial: function(successCallback, errorCallback) {
                'showInterstitial', // with this action name
                [{                  // and this array of custom arguments to
 								// create our entry
-                   
+                   "trigger" : trigger
                }]
        ); 
 },
-
-/**
- * Function to check if Interstitial is ready
- */
-isInterstitialReady: function(successCallback, errorCallback) {
-		if (errorCallback == null) { errorCallback = function() {}}
-        if (typeof errorCallback != "function")  {
-            console.log("error callback parameter must be a function");
-            return
-        }
-        if (typeof successCallback != "function") {
-            console.log("success callback parameter must be a function");
-            return
-        }
-        
-		cordova.exec(
-                successCallback, // success callback function
-                errorCallback, // error callback function
-                'MobilecorePlugin', // mapped to our native Java class called
-									// "MobilecorePlugin"
-                'isInterstitialReady', // with this action name
-                [{                  // and this array of custom arguments to
-									// create our entry
-                   
-                }]
-        );
-},
-
-/**
-* Function to Refresh Offers
-* @param successcallback
-* @param errorcallback
-*/
-refreshOffers: function(successCallback, errorCallback) {
-	if (errorCallback == null) { errorCallback = function() {}}
-    if (typeof errorCallback != "function")  {
-           console.log("error callback parameter must be a function");
-           return
-    }
-    if (typeof successCallback != "function") {
-           console.log("success callback parameter must be a function");
-           return
-    }
-       
-	cordova.exec(
-               successCallback, // success callback function
-               errorCallback, // error callback function
-               'MobilecorePlugin', // mapped to our native Java class called
-								// "MobilecorePlugin"
-               'refreshOffers', // with this action name
-               [{                  // and this array of custom arguments to
-								// create our entry
-                   
-               }]
-       ); 
-},
-
-/**
- * Function to open url
- * @param successcallback
- * @param errorcallback
- * @param url
- * @param internal
- */
-openUrl: function(successCallback, errorCallback, url, internal) {
-		if (errorCallback == null) { errorCallback = function() {}}
-        if (typeof errorCallback != "function")  {
-            console.log("error callback parameter must be a function");
-            return
-        }
-        if (typeof successCallback != "function") {
-            console.log("success callback parameter must be a function");
-            return
-        }
-        
-		cordova.exec(
-                successCallback, // success callback function
-                errorCallback, // error callback function
-                'MobilecorePlugin', // mapped to our native Java class called
-									// "MobilecorePlugin"
-                'openUrl', // with this action name
-                [{                  // and this array of custom arguments to
-									// create our entry
-                    "url": url,
-                    "internal": internal
-                }]
-        );
-},
-
-/**
- * Function to register an Interstitial Ready Listener
- * @param successcallback
- * @param errorcallback
- */
-setInterstitialReadyListener: function(successCallback, errorCallback) {
-		if (errorCallback == null) { errorCallback = function() {}}
-        if (typeof errorCallback != "function")  {
-            console.log("error callback parameter must be a function");
-            return
-        }
-        if (typeof successCallback != "function") {
-            console.log("success callback parameter must be a function");
-            return
-        }
-        
-		cordova.exec(
-                successCallback, // success callback function
-                errorCallback, // error callback function
-                'MobilecorePlugin', // mapped to our native Java class called
-									// "MobilecorePlugin"
-                'setInterstitialReadyListener', // with this action name
-                [{                  // and this array of custom arguments to
-									// create our entry
-                    
-                }]
-        );
-},
-
 
 /**
  * Function to show Stickee
  * @param successcallback
  * @param errorcallback
  */
-showStickee: function(successCallback, errorCallback) {
+showStickee: function(successCallback, errorCallback, trigger) {
 		if (errorCallback == null) { errorCallback = function() {}}
         if (typeof errorCallback != "function")  {
             console.log("error callback parameter must be a function");
@@ -204,6 +86,7 @@ showStickee: function(successCallback, errorCallback) {
                 'showStickee', // with this action name
                 [{                  // and this array of custom arguments to
 									// create our entry
+                   "trigger" : trigger
                 }]
         );
 },
@@ -230,34 +113,6 @@ hideStickee: function(successCallback, errorCallback) {
                 'MobilecorePlugin', // mapped to our native Java class called
 									// "MobilecorePlugin"
                 'hideStickee', // with this action name
-                [{                  // and this array of custom arguments to
-									// create our entry
-                }]
-        );
-},
-
-/**
- * Function to check if Stickee is ready
- * @param successcallback
- * @param errorcallback
- */
-isStickeeReady: function(successCallback, errorCallback) {
-		if (errorCallback == null) { errorCallback = function() {}}
-        if (typeof errorCallback != "function")  {
-            console.log("error callback parameter must be a function");
-            return
-        }
-        if (typeof successCallback != "function") {
-            console.log("success callback parameter must be a function");
-            return
-        }
-        
-		cordova.exec(
-                successCallback, // success callback function
-                errorCallback, // error callback function
-                'MobilecorePlugin', // mapped to our native Java class called
-									// "MobilecorePlugin"
-                'isStickeeReady', // with this action name
                 [{                  // and this array of custom arguments to
 									// create our entry
                 }]
@@ -321,34 +176,6 @@ isStickeeShowingOffers: function(successCallback, errorCallback) {
 },
 
 /**
- * Function to register Stickeez Ready Listener
- * @param successcallback
- * @param errorcallback
- */
-setStickeezReadyListener: function(successCallback, errorCallback) {
-		if (errorCallback == null) { errorCallback = function() {}}
-        if (typeof errorCallback != "function")  {
-            console.log("error callback parameter must be a function");
-            return
-        }
-        if (typeof successCallback != "function") {
-            console.log("success callback parameter must be a function");
-            return
-        }
-        
-		cordova.exec(
-                successCallback, // success callback function
-                errorCallback, // error callback function
-                'MobilecorePlugin', // mapped to our native Java class called
-									// "MobilecorePlugin"
-                'setStickeezReadyListener', // with this action name
-                [{                  // and this array of custom arguments to
-									// create our entry
-                }]
-        );
-},
-
-/**
  * Function to set Stickeez position
  * @param successcallback
  * @param errorcallback
@@ -383,7 +210,7 @@ setStickeezPosition: function(successCallback, errorCallback, position) {
  * @param successcallback
  * @param errorcallback
  */
-directToMarket: function(successCallback, errorCallback) {
+directToMarket: function(successCallback, errorCallback, trigger) {
 		if (errorCallback == null) { errorCallback = function() {}}
         if (typeof errorCallback != "function")  {
             console.log("error callback parameter must be a function");
@@ -402,63 +229,7 @@ directToMarket: function(successCallback, errorCallback) {
                 'directToMarket', // with this action name
                 [{                  // and this array of custom arguments to
 									// create our entry
-                }]
-        );
-},
-
-
-/**
- * Function to check if Direct to Market is ready
- * @param successcallback
- * @param errorcallback
- */
-isDirectToMarketReady: function(successCallback, errorCallback) {
-		if (errorCallback == null) { errorCallback = function() {}}
-        if (typeof errorCallback != "function")  {
-            console.log("error callback parameter must be a function");
-            return
-        }
-        if (typeof successCallback != "function") {
-            console.log("success callback parameter must be a function");
-            return
-        }
-        
-		cordova.exec(
-                successCallback, // success callback function
-                errorCallback, // error callback function
-                'MobilecorePlugin', // mapped to our native Java class called
-									// "MobilecorePlugin"
-                'isDirectToMarketReady', // with this action name
-                [{                  // and this array of custom arguments to
-									// create our entry
-                }]
-        );
-},
-
-/**
- * Function to register Direct to Market Ready Listener
- * @param successcallback
- * @param errorcallback
- */
-setDirectToMarketReadyListener: function(successCallback, errorCallback) {
-		if (errorCallback == null) { errorCallback = function() {}}
-        if (typeof errorCallback != "function")  {
-            console.log("error callback parameter must be a function");
-            return
-        }
-        if (typeof successCallback != "function") {
-            console.log("success callback parameter must be a function");
-            return
-        }
-        
-		cordova.exec(
-                successCallback, // success callback function
-                errorCallback, // error callback function
-                'MobilecorePlugin', // mapped to our native Java class called
-									// "MobilecorePlugin"
-                'setDirectToMarketReadyListener', // with this action name
-                [{                  // and this array of custom arguments to
-									// create our entry
+                    "trigger" : trigger
                 }]
         );
 },
@@ -491,11 +262,78 @@ setAdUnitEventListener: function(successCallback, errorCallback) {
         );
 },
 
+/**
+ * Function to check if Ad Unit is ready with particular Trigger
+ */
+isReady: function(successCallback, errorCallback, adUnit, trigger) {
+        if (errorCallback == null) { errorCallback = function() {}}
+        if (typeof errorCallback != "function")  {
+            console.log("error callback parameter must be a function");
+            return
+        }
+        if (typeof successCallback != "function") {
+            console.log("success callback parameter must be a function");
+            return
+        }
+        
+        cordova.exec(
+                successCallback, // success callback function
+                errorCallback, // error callback function
+                'MobilecorePlugin', // mapped to our native Java class called
+                                    // "MobilecorePlugin"
+                'isReady', // with this action name
+                [{                  // and this array of custom arguments to
+                                    // create our entry
+                   "ad_unit": adUnit,
+                   "trigger": trigger
+                }]
+        );
+},
+
+/**
+ * Function to load Ad Unit with particular Trigger
+ */
+loadAdUnit: function(successCallback, errorCallback, adUnit, triggers) {
+        if (errorCallback == null) { errorCallback = function() {}}
+        if (typeof errorCallback != "function")  {
+            console.log("error callback parameter must be a function");
+            return
+        }
+        if (typeof successCallback != "function") {
+            console.log("success callback parameter must be a function");
+            return
+        }
+        
+        cordova.exec(
+                successCallback, // success callback function
+                errorCallback, // error callback function
+                'MobilecorePlugin', // mapped to our native Java class called
+                                    // "MobilecorePlugin"
+                'loadAdUnit', // with this action name
+                [{                  // and this array of custom arguments to
+                                    // create our entry
+                   "ad_unit": adUnit,
+                },
+                triggers]
+        );
+},
+
 }
 
+MobilecorePlugin.AD_UNIT_INIT_SUCCEEDED = "AD_UNIT_INIT_SUCCEEDED";
+MobilecorePlugin.AD_UNIT_INIT_FAILED = "AD_UNIT_INIT_FAILED";
 MobilecorePlugin.AD_UNIT_READY = "AD_UNIT_READY";
 MobilecorePlugin.AD_UNIT_NOT_READY = "AD_UNIT_NOT_READY";
 MobilecorePlugin.AD_UNIT_DISMISSED = "AD_UNIT_DISMISSED";
+MobilecorePlugin.AD_UNIT_ALREADY_SHOWING = "AD_UNIT_ALREADY_SHOWING";
+MobilecorePlugin.AD_UNIT_SHOW_ERROR = "AD_UNIT_SHOW_ERROR";
+MobilecorePlugin.AD_UNIT_SHOW = "AD_UNIT_SHOW";
+MobilecorePlugin.AD_UNIT_LOAD_ERROR = "AD_UNIT_LOAD_ERROR";
+MobilecorePlugin.AD_UNIT_CLICK = "AD_UNIT_CLICK";
+MobilecorePlugin.AD_UNIT_SENT_TO_STORE = "AD_UNIT_SENT_TO_STORE";
+MobilecorePlugin.AD_UNIT_SENT_TO_STORE_FAILED = "AD_UNIT_SENT_TO_STORE_FAILED";
+MobilecorePlugin.AD_UNIT_TRIGGER_DISABLED = "AD_UNIT_TRIGGER_DISABLED";
+MobilecorePlugin.AD_UNIT_ALREADY_LOADING = "AD_UNIT_ALREADY_LOADING";
 
 MobilecorePlugin.STICKEEZ_POSITION_TOP_LEFT = 10;
 MobilecorePlugin.STICKEEZ_POSITION_TOP_RIGHT = 11;
@@ -504,7 +342,26 @@ MobilecorePlugin.STICKEEZ_POSITION_MIDDLE_RIGHT = 13;
 MobilecorePlugin.STICKEEZ_POSITION_BOTTOM_LEFT = 14;
 MobilecorePlugin.STICKEEZ_POSITION_BOTTOM_RIGHT = 15;
 
+MobilecorePlugin.AD_UNIT_INTERSTITIAL = "AD_UNIT_INTERSTITIAL";
+MobilecorePlugin.AD_UNIT_STICKEEZ = "AD_UNIT_STICKEEZ";
+MobilecorePlugin.AD_UNIT_DIRECT_TO_MARKET = "AD_UNIT_DIRECT_TO_MARKET";
+
+MobilecorePlugin.AD_UNIT_TRIGGER_DEFAULT = "DEFAULT";
+MobilecorePlugin.AD_UNIT_TRIGGER_APP_START = "APP_START";
+MobilecorePlugin.AD_UNIT_TRIGGER_APP_EXIT = "APP_EXIT";
+MobilecorePlugin.AD_UNIT_TRIGGER_BUTTON_CLICK = "BUTTON_CLICK";
+MobilecorePlugin.AD_UNIT_TRIGGER_GAME_LEVEL_END_WIN = "GAME_LEVEL_END_WIN";
+MobilecorePlugin.AD_UNIT_TRIGGER_GAME_LEVEL_END_LOSE = "GAME_LEVEL_END_LOSE";
+MobilecorePlugin.AD_UNIT_TRIGGER_MAIN_MENU = "MAIN_MENU";
+MobilecorePlugin.AD_UNIT_TRIGGER_SETTINGS_SCREEN = "SETTINGS_SCREEN";
+MobilecorePlugin.AD_UNIT_TRIGGER_ACTION_START = "ACTION_START";
+MobilecorePlugin.AD_UNIT_TRIGGER_ACTION_BREAK = "ACTION_BREAK";
+MobilecorePlugin.AD_UNIT_TRIGGER_ACTION_END = "ACTION_END";
+        
+MobilecorePlugin.AD_UNIT_TRIGGER_NULL = "NULL";
+MobilecorePlugin.AD_UNIT_TRIGGER_NONE = "NONE";
 
 //-------------------------------------------------------------------
 
 module.exports = MobilecorePlugin;
+});
